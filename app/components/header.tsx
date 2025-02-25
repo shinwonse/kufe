@@ -19,7 +19,7 @@ export function Header() {
     >
       <div
         className={cn(
-          'w-full max-w-none flex h-16 items-center justify-between px-6 md:px-10 lg:px-16',
+          'w-full max-w-none flex h-16 items-center justify-between px-6 md:px-10 lg:px-8',
         )}
       >
         <Link to="/" className={cn('flex items-center gap-2 font-semibold')}>
