@@ -1,3 +1,4 @@
+import { cn } from '~/libs/utils/cn';
 import type { Route } from './+types/_index';
 
 export function meta({}: Route.MetaArgs) {
@@ -8,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <div>Home</div>;
+  return <div className={cn('bg-background')}>Home</div>;
 }
