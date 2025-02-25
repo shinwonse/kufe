@@ -12,35 +12,45 @@ const navItems = [
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
-        <div className="flex items-center gap-6">
-          <Link to="/" className="flex items-center gap-2 font-semibold">
-            <span className="text-xl font-bold text-emerald-500">web</span>
-            <span className="text-xl font-bold">KUFE</span>
-          </Link>
-          <nav className="hidden md:flex">
-            <ul className="flex gap-6">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    to={item.href}
-                    className={cn(
-                      'text-sm font-medium text-muted-foreground transition-colors hover:text-foreground',
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-        <div className="flex items-center gap-2">
+    <header
+      className={cn(
+        'sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60',
+      )}
+    >
+      <div
+        className={cn(
+          'w-full max-w-none flex h-16 items-center justify-between px-6 md:px-10 lg:px-16',
+        )}
+      >
+        <Link to="/" className={cn('flex items-center gap-2 font-semibold')}>
+          <span className={cn('text-xl font-bold text-emerald-500')}>web</span>
+          <span className={cn('text-xl font-bold')}>KUFE</span>
+        </Link>
+
+        <nav className={cn('hidden md:flex')}>
+          <ul className={cn('flex gap-6')}>
+            {navItems.map((item) => (
+              <li key={item.href}>
+                <Link
+                  to={item.href}
+                  className={cn(
+                    'text-sm font-medium text-muted-foreground transition-colors hover:text-foreground',
+                  )}
+                >
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className={cn('flex items-center gap-2')}>
           <ThemeToggle />
           <Button
             variant="default"
-            className="hidden bg-emerald-500 hover:bg-emerald-600 sm:inline-flex"
+            className={cn(
+              'hidden bg-emerald-500 hover:bg-emerald-600 sm:inline-flex',
+            )}
           >
             Join Community
           </Button>
