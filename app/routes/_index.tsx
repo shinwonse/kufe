@@ -1,8 +1,8 @@
-import { CommunityStats } from '~/components/community-stats';
 import { FeatureCards } from '~/components/feature-cards';
 import { HeroSection } from '~/components/hero-section';
 import { LatestActivities } from '~/components/latest-activities';
 import { Layout } from '~/components/layout';
+import { cn } from '~/libs/utils/cn';
 import type { Route } from './+types/_index';
 
 export function meta({}: Route.MetaArgs) {
@@ -21,11 +21,9 @@ export default function Home() {
     <Layout>
       <HeroSection />
       <FeatureCards />
-      <div className="bg-muted/30">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <CommunityStats />
-          <LatestActivities />
-        </div>
+      <div className={cn('bg-muted/30 ')}>
+        {/* <CommunityStats /> */}
+        <LatestActivities />
       </div>
     </Layout>
   );

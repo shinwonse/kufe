@@ -33,25 +33,27 @@ const badgeStyles = {
 
 export function LatestActivities() {
   return (
-    <section className="py-16">
-      <div className="container">
-        <h2 className="mb-8 text-2xl font-bold">Latest Activities</h2>
-        <div className="space-y-4">
+    <section className={cn('p-8')}>
+      <div className={cn('container')}>
+        <h2 className={cn('mb-8 text-2xl font-bold')}>Latest Activities</h2>
+        <div className={cn('space-y-4')}>
           {activities.map((activity, index) => (
             <div
               key={index}
-              className="rounded-lg border border-border/50 bg-card p-4 transition-colors hover:border-border"
+              className={cn(
+                'rounded-lg border border-border/50 bg-card p-4 transition-colors hover:border-border',
+              )}
             >
-              <div className="flex items-center justify-between">
-                <div className="flex flex-col gap-1">
-                  <div className="flex flex-wrap items-center gap-1">
-                    <span className="font-medium">{activity.user}</span>
-                    <span className="text-muted-foreground">
+              <div className={cn('flex items-center justify-between')}>
+                <div className={cn('flex flex-col gap-1')}>
+                  <div className={cn('flex flex-wrap items-center gap-1')}>
+                    <span className={cn('font-medium')}>{activity.user}</span>
+                    <span className={cn('text-muted-foreground')}>
                       {activity.action}
                     </span>
                     <span>{activity.content}</span>
                   </div>
-                  <span className="text-sm text-muted-foreground">
+                  <span className={cn('text-sm text-muted-foreground')}>
                     {activity.time}
                   </span>
                 </div>
