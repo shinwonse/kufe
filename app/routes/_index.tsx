@@ -3,9 +3,8 @@ import { HeroSection } from '~/components/hero-section';
 import { LatestActivities } from '~/components/latest-activities';
 import { Layout } from '~/components/layout';
 import { cn } from '~/libs/utils/cn';
-import type { Route } from './+types/_index';
 
-export function meta({}: Route.MetaArgs) {
+export function meta() {
   return [
     { title: 'webKUFE - Front-end Developer Community' },
     {
