@@ -11,7 +11,6 @@ interface LayoutProps {
 }
 
 export function Layout({ children }: LayoutProps) {
-  // Add client-side code for dark mode detection
   useEffect(() => {
     const isDarkMode = window.matchMedia(
       '(prefers-color-scheme: dark)',
@@ -23,7 +22,7 @@ export function Layout({ children }: LayoutProps) {
     <ThemeProvider defaultTheme="system">
       <div className={cn('min-h-screen bg-background font-sans antialiased')}>
         <Header />
-        <main className="container mx-auto px-4 py-8 md:px-6 lg:px-8">
+        <main className={cn('container mx-auto px-4 py-8 md:px-6 lg:px-8')}>
           {children}
         </main>
         <Footer />

@@ -6,7 +6,7 @@ import { cn } from '~/libs/utils/cn';
 
 export function meta() {
   return [
-    { title: 'webKUFE - Front-end Developer Community' },
+    { title: 'KUFE - Konkuk Univ Front-end Developer Community' },
     {
       name: 'description',
       content:
@@ -21,7 +21,6 @@ export default function Home() {
       <HeroSection />
       <FeatureCards />
       <div className={cn('bg-muted/30 ')}>
-        {/* <CommunityStats /> */}
         <LatestActivities />
       </div>
     </Layout>
