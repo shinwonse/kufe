@@ -1,36 +1,11 @@
 import { Search } from 'lucide-react';
+import { useLoaderData } from 'react-router';
 import { Layout } from '~/components/layout';
 import { Button } from '~/components/ui/button';
 import { Input } from '~/components/ui/input';
-import { cn } from '~/libs/utils/cn';
-
-// Mock data for initial development
-const articles = [
-  {
-    id: 1,
-    title: 'Modern React Patterns in 2025',
-    excerpt:
-      'Explore the latest React patterns and best practices that will shape frontend development in 2025.',
-    author: 'Sarah Chen',
-    date: '2024-02-27',
-    readTime: '5 min read',
-    tags: ['React', 'Frontend', 'Best Practices'],
-    thumbnail: 'https://placehold.co/600x400/1a1a1a/ffffff?text=React+Patterns',
-  },
-  {
-    id: 2,
-    title: 'Building Performant Next.js Applications',
-    excerpt:
-      'Learn how to optimize your Next.js applications for better performance and user experience.',
-    author: 'Alex Kim',
-    date: '2024-02-26',
-    readTime: '7 min read',
-    tags: ['Next.js', 'Performance', 'Web Development'],
-    thumbnail:
-      'https://placehold.co/600x400/1a1a1a/ffffff?text=Next.js+Performance',
-  },
-  // Add more mock articles as needed
-];
+import { getArticles } from '~/libs/supabase/articles';
+import type { Article } from '~/libs/supabase/types';
+import { cn } from '~/utils/cn';
 
 export function meta() {
   return [
@@ -42,7 +17,26 @@ export function meta() {
   ];
 }
 
+function mapArticleToUI(article: Article) {
+  return {
+    id: article.id,
+    title: article.title,
+    description: article.description,
+    author: article.submitted_by,
+    date: article.submitted_at,
+    tags: article.categories,
+    thumbnail: article.image_url,
+  };
+}
+
+export async function loader() {
+  const articles = await getArticles();
+  return { articles: articles.map(mapArticleToUI) };
+}
+
 export default function Articles() {
+  const { articles } = useLoaderData<typeof loader>();
+
   return (
     <Layout>
       <div className={cn('container mx-auto max-w-7xl')}>
@@ -119,21 +113,13 @@ export default function Articles() {
                 >
                   {article.title}
                 </h2>
-                <p className={cn('mb-4 flex-grow text-muted-foreground')}>
-                  {article.excerpt}
-                </p>
-                <div
+                <p
                   className={cn(
-                    'flex items-center justify-between text-sm text-muted-foreground',
+                    'mb-4 flex-grow text-muted-foreground line-clamp-3',
                   )}
                 >
-                  <span>{article.author}</span>
-                  <div className={cn('flex items-center gap-2')}>
-                    <span>{article.date}</span>
-                    <span>•</span>
-                    <span>{article.readTime}</span>
-                  </div>
-                </div>
+                  {article.description}
+                </p>
               </div>
             </article>
           ))}

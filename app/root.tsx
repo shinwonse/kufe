@@ -8,6 +8,7 @@ import {
 } from 'react-router';
 
 import type { Route } from './+types/root';
+import { QueryProvider } from './providers/query-provider';
 
 import './app.css';
 
@@ -43,7 +44,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <QueryProvider>
+      <Layout>
+        <Outlet />
+      </Layout>
+    </QueryProvider>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
